@@ -7,6 +7,8 @@ The Toronto municipal Open Data site publishes a [data set](http://www1.toronto.
 
 This tool makes it possible to extract the data from the published ESRI Shapefiles in a more accessible format for projects to use. Currently there is support for converting to CSV files and writing to Mongo databases. It should be straightforward to extend the tool to export to additional formats.
 
+You may also be interested in paired GitHub project that provides access to the same data with a simple REST based web service:
+[torontoopendata-addresspoints-geocoder](https://github.com/Intelliware/torontoopendata-addresspoints-geocoder)
 
 Requirements
 ------------
