@@ -1,11 +1,11 @@
-Toronto Address Points open data set Exporter
-=============================================
+Toronto Address Points Open Dataset Exporter
+============================================
 
-The Toronto municipal Open Data site publishes a data set comprising all the 500k+ addresses found within the city, and includes their geo-location (latitude and longitude) and category of use, among other fields. This data set will be of use by many Toronto based apps and services, however, the ESRI Shapefile format that it is distributed in might be a barrier for some smaller projects.   
+The Toronto municipal Open Data site publishes a [data set](http://www1.toronto.ca/wps/portal/open_data/open_data_item_details?vgnextoid=91415f9cd70bb210VgnVCM1000003dd60f89RCRD&vgnextchannel=6e886aa8cc819210VgnVCM10000067d60f89RCRD) comprising all the 500,000+ addresses found within the city. Each location includes its geo-location (latitude and longitude) and category of use, among other fields. This dataset could be useful for many Toronto focused apps and APIs, however, the ESRI Shapefile format that it is distributed in will be a barrier for some.   
 
 [Toronto Open Data - Address Points](http://www1.toronto.ca/wps/portal/open_data/open_data_item_details?vgnextoid=91415f9cd70bb210VgnVCM1000003dd60f89RCRD&vgnextchannel=6e886aa8cc819210VgnVCM10000067d60f89RCRD)
 
-This tool makes it possible to extract the data from the published ESRI Shapefiles in a more accessible format for other projects to make use of. Initially there is is support for CSV files and writing to a MongoDB and it should be straightforward to extend it to export to further formats.
+This tool makes it possible to extract the data from the published ESRI Shapefiles in a more accessible format for projects to use. Currently there is support for converting to CSV files and writing to Mongo databases. It should be straightforward to extend the tool to export to additional formats.
 
 
 Requirements
@@ -25,6 +25,8 @@ Download the Address Points(Municipal) - April 2012 (WGS84) data set:
 (or the eqivalent download from: [Address Points](http://www1.toronto.ca/wps/portal/open_data/open_data_item_details?vgnextoid=91415f9cd70bb210VgnVCM1000003dd60f89RCRD&vgnextchannel=6e886aa8cc819210VgnVCM10000067d60f89RCRD) )
 
 Unzip the file to a new directory.
+
+The result should include a file such as: address_points_wgs84_apr2012/address_point_wgs84.shp
 
 
 Building and Running
