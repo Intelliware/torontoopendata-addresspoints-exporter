@@ -10,25 +10,12 @@ This tool makes it possible to extract the data from the published ESRI Shapefil
 You may also be interested in paired GitHub project that provides access to the same data with a simple REST based web service:
 [torontoopendata-addresspoints-geocoder](https://github.com/Intelliware/torontoopendata-addresspoints-geocoder)
 
+
 Requirements
 ------------
 
 * Java 1.5+
 * Maven 2.1+
-
-
-Download Data Set
------------------
-
-Download the Address Points(Municipal) - April 2012 (WGS84) data set:
-
-[address_points_wgs84_apr2012.zip](http://www1.toronto.ca/City_Of_Toronto/Information_&_Technology/Open_Data/Data_Sets/Assets/Files/address_points_wgs84_apr2012.zip)
-
-(or the eqivalent download from: [Address Points](http://www1.toronto.ca/wps/portal/open_data/open_data_item_details?vgnextoid=91415f9cd70bb210VgnVCM1000003dd60f89RCRD&vgnextchannel=6e886aa8cc819210VgnVCM10000067d60f89RCRD) )
-
-Unzip the file to a new directory.
-
-The result should include a file such as: address_points_wgs84_apr2012/address_point_wgs84.shp
 
 
 Building and Running
@@ -42,15 +29,15 @@ Build the tool with Maven:
 
 Confirm the basic functioning of the tool:
 
-    java -jar target/addresspoints-exporter.jar address_points_wgs84_apr2012/address_point_wgs84.shp -v
+    java -jar target/addresspoints-exporter.jar -v
 
 To output the addresses to a CSV file:
 
-    java -jar target/addresspoints-exporter.jar address_points_wgs84_apr2012/address_point_wgs84.shp  --csv out.csv -v
+    java -jar target/addresspoints-exporter.jar --csv out.csv -v
 
 To add the addresses to a Mongo DB:
 
-    java -jar target/addresspoints-exporter.jar address_points_wgs84_apr2012/address_point_wgs84.shp  --mongo mongodb://mongo/toronto-addresspoints -v
+    java -jar target/addresspoints-exporter.jar --mongo mongodb://mongo/toronto-addresspoints -v
 
 
 Licence

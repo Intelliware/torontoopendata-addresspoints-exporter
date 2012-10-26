@@ -10,8 +10,8 @@ import org.kohsuke.args4j.Option;
  */
 public class CmdLineOptions {
 
-	@Argument(required = true, index = 0, metaVar="SHP-FILE", usage="read addresses from Toronto open data address points ESRI .shp file")
-	public File source;
+	@Argument(required = false, index = 0, metaVar="SHP-FILE", usage="read addresses from Toronto open data address points ESRI .shp file")
+	public File source = new File(".download/address_point_wgs84.shp");
 	
 	@Option(name="-v", aliases= {"--verbose"}, usage="log each address point read")
 	public boolean verbose;

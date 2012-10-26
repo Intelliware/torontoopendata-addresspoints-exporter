@@ -60,7 +60,7 @@
 			<version>1.5.6</version>
 		</dependency>
 	</dependencies>
-	
+
 	<repositories>
 		<repository>
 			<id>maven2-repository.dev.java.net</id>
@@ -97,6 +97,31 @@
 								</transformer>
 							</transformers>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				 <version>1.7</version>
+				<executions>
+					<execution>
+						<id>prepare</id>
+						<phase>validate</phase>
+						<configuration>
+							<tasks>
+								<echo message="downloading phase" />
+								<mkdir dir=".download" />
+								<get
+									src="http://www1.toronto.ca/City_Of_Toronto/Information_&amp;_Technology/Open_Data/Data_Sets/Assets/Files/address_points_wgs84_apr2012.zip"
+									dest=".download/address_points_wgs84.zip"
+									usetimestamp="true" />
+								<unzip src=".download/address_points_wgs84.zip" dest=".download/" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
