@@ -59,6 +59,11 @@
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>1.5.6</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>13.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -103,7 +108,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
-				 <version>1.7</version>
+				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>prepare</id>
@@ -114,8 +119,7 @@
 								<mkdir dir=".download" />
 								<get
 									src="http://www1.toronto.ca/City_Of_Toronto/Information_&amp;_Technology/Open_Data/Data_Sets/Assets/Files/address_points_wgs84_apr2012.zip"
-									dest=".download/address_points_wgs84.zip"
-									usetimestamp="true" />
+									dest=".download/address_points_wgs84.zip" usetimestamp="true" />
 								<unzip src=".download/address_points_wgs84.zip" dest=".download/" />
 							</tasks>
 						</configuration>
