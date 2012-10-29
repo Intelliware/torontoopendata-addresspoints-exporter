@@ -1,8 +1,11 @@
 package com.intelliware.torontoopendata.addresspoints;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.opengis.feature.Feature;
+import org.opengis.feature.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +25,9 @@ public class MongoWriter implements FeatureProcessor {
 	private DB db;
 	private Mongo mongo;
 	private DBCollection addressCollection;
+	
+	// NOTE: Dependency on mongo help comment in CmdLineOptions
+	public final static String DB_COLLECTION = "addresses";
 
 	private final Logger logger = LoggerFactory.getLogger(MongoWriter.class);
 	
@@ -35,19 +41,36 @@ public class MongoWriter implements FeatureProcessor {
 		if (mongoUri.getUsername() != null && mongoUri.getPassword() != null) {
 			db.authenticate(mongoUri.getUsername(), mongoUri.getPassword());
 		}
-		addressCollection = db.getCollection("addresses");
-		logger.info("Using mongo collection: "+addressCollection.getName()+" with count: "+addressCollection.count());
+		addressCollection = db.getCollection(DB_COLLECTION);
+		logger.info("Using mongo collection: "+addressCollection.getName());
+		removeExistingAddresses();
+		esureIndexesPresent();
+		logger.info("Loading data...");
+	}
+
+	private void esureIndexesPresent() {
+		logger.info("Ensure indexes setup...");
+		Map<String, Object> indexes = new HashMap<String,Object>();
+		indexes.put(SourceSchema.ADDRESS, 1);
+		indexes.put(SourceSchema.LF_NAME, 1);
+		addressCollection.ensureIndex(new BasicDBObject(indexes));
+	}
+
+	private void removeExistingAddresses() {
+		logger.info("Clearing out initial items:" +addressCollection.count()+"...");
+		addressCollection.remove(new BasicDBObject());
 	}
 
 	public void write(Feature feature, Point geometry) {
 		BasicDBObject document = new BasicDBObject();
-		document.put("id", feature.getProperty("GEO_ID").getValue());
-		document.put("lat", geometry.getY());
-		document.put("lng", geometry.getX());
-		document.put("address", feature.getProperty("ADDRESS").getValue());
-		document.put("street", feature.getProperty("LF_NAME").getValue());
-		document.put("numberLow", feature.getProperty("LO_NUM").getValue());
-		document.put("numberHigh", feature.getProperty("HI_NUM").getValue());
+		for (Property property : feature.getProperties()) {
+			if (property.getValue() instanceof Point) {
+				document.put("lat", geometry.getY());
+				document.put("lng", geometry.getX());
+			} else {
+				document.put(property.getName().toString(), property.getValue());
+			}
+		}
 		addressCollection.insert(document);
 	}
 

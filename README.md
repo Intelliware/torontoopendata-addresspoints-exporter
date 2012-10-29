@@ -46,7 +46,7 @@ Command Line Options
      SHP-FILE               : read addresses from Toronto open data address points
                               ESRI .shp file
      -c (--csv) CSV-FILE    : write addresses to the specified CSV file
-     -m (--mongo) MONGO-URI : write addresses to the specified mongo database URI
+     -m (--mongo) MONGO-URI : write addresses to the specified mongo database URI in the addresses collection
      -s (--schema)          : dump out all the fields from the source file
      -v (--verbose)         : log each address point read
 

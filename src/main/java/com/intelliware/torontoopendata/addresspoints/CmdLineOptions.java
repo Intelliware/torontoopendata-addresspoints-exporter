@@ -16,7 +16,7 @@ public class CmdLineOptions {
 	@Option(name="-v", aliases= {"--verbose"}, usage="log each address point read")
 	public boolean verbose;
 	
-	@Option(name="-m", aliases= {"--mongo"}, metaVar="MONGO-URI", usage="write addresses to the specified mongo database URI")
+	@Option(name="-m", aliases= {"--mongo"}, metaVar="MONGO-URI", usage="write addresses to the specified mongo database URI in the addresses collection")
 	public String mongoUrl;
 	
 	@Option(name="-c", aliases= {"--csv"}, metaVar="CSV-FILE", usage="write addresses to the specified CSV file")
