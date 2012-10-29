@@ -40,6 +40,17 @@ To add the addresses to a Mongo DB:
     java -jar target/addresspoints-exporter.jar --mongo mongodb://mongo/toronto-addresspoints -v
 
 
+Command Line Options
+--------------------
+    java -jar target/addresspoints-exporter.jar [options...] SHP-FILE
+     SHP-FILE               : read addresses from Toronto open data address points
+                              ESRI .shp file
+     -c (--csv) CSV-FILE    : write addresses to the specified CSV file
+     -m (--mongo) MONGO-URI : write addresses to the specified mongo database URI
+     -s (--schema)          : dump out all the fields from the source file
+     -v (--verbose)         : log each address point read
+
+
 Licence
 -------
 

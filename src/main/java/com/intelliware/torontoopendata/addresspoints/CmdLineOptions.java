@@ -21,4 +21,8 @@ public class CmdLineOptions {
 	
 	@Option(name="-c", aliases= {"--csv"}, metaVar="CSV-FILE", usage="write addresses to the specified CSV file")
 	public File csv;
+	
+	@Option(name="-s", aliases= {"--schema"}, usage="dump out all the fields from the source file")
+	public boolean schema;
+	
 }

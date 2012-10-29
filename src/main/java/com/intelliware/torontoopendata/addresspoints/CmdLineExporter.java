@@ -40,6 +40,9 @@ public class CmdLineExporter {
 		if (options.verbose) {
 			exporter.addProccessor(new VerboseLogger());
 		}
+		if (options.schema) {
+			exporter.addProccessor(new SchemaLogger());
+		}
 		if (options.csv != null) {
 			exporter.addProccessor(new CsvWriter(options.csv));
 		}
@@ -51,7 +54,7 @@ public class CmdLineExporter {
 
 	private void printParseMessage(CmdLineParser parser, CmdLineException e) {
 		System.err.println(e.getMessage());
-		System.err.println("java -jar addresspoints-importer.jar [options...] SHP-FILE");
+		System.err.println("java -jar target/addresspoints-exporter.jar [options...] SHP-FILE");
 		parser.printUsage(System.err);
 	}
 }
