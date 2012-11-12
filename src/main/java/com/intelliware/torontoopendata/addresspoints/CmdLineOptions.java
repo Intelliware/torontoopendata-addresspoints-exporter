@@ -25,4 +25,7 @@ public class CmdLineOptions {
 	@Option(name="-s", aliases= {"--schema"}, usage="dump out all the fields from the source file")
 	public boolean schema;
 	
+	@Option(name="-S", aliases= {"--stats"}, usage="dump out address stats as JSON")
+	public boolean stats;
+	
 }

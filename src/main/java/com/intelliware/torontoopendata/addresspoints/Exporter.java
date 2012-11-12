@@ -82,6 +82,7 @@ public class Exporter {
 			try {
 				processor.end();
 			} catch (Exception e) {
+				System.err.println("Failed to end: "+processor+" with:"+e);
 				// continue
 			}
 		}

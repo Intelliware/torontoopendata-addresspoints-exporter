@@ -43,6 +43,9 @@ public class CmdLineExporter {
 		if (options.schema) {
 			exporter.addProccessor(new SchemaLogger());
 		}
+		if (options.stats) {
+			exporter.addProccessor(new StatsLogger());
+		}
 		if (options.csv != null) {
 			exporter.addProccessor(new CsvWriter(options.csv));
 		}

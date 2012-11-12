@@ -6,7 +6,10 @@ package com.intelliware.torontoopendata.addresspoints;
 public class SourceSchema {
 
 	public static final String ADDRESS = "ADDRESS";
+	public static final String FCODE = "FCODE";
+	public static final String FCODE_DESC = "FCODE_DESC";
 	public static final String LF_NAME = "LF_NAME";
+	public static final String LO_NUM = "LO_NUM";
 	
 	private SourceSchema() {
 		// do not instantiate
